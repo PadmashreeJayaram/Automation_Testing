@@ -1,7 +1,7 @@
 package com.sample.api;
 
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
