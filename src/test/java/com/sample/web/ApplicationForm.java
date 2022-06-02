@@ -1,6 +1,8 @@
 package com.sample.web;
 
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +15,7 @@ public class ApplicationForm {
 	
 	@Test
 	public void keyInApplicationForm() {
-		
+
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/resources/chromedriver.exe");
 		
 		WebDriver driver=new ChromeDriver();
@@ -25,7 +27,8 @@ public class ApplicationForm {
 		WebDriverWait wait = new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h5[normalize-space()='Student Registration Form']")));
 		
-		driver.findElement(By.xpath("//h5[normalize-space()='Student Registration Form']")).getText().equals("Student Registration Form");
+		String studentRegistrationHeader=driver.findElement(By.xpath("//h5[normalize-space()='Student Registration Form']")).getText();
+		assertEquals(studentRegistrationHeader,"Student Registration Form");		
 		
 		driver.findElement(By.xpath("//*[@id='firstName']")).click();
 		driver.findElement(By.xpath("//*[@id='firstName']")).sendKeys("Sheldon");
@@ -38,4 +41,5 @@ public class ApplicationForm {
 		
 		driver.quit();
 	}
+	
 }
